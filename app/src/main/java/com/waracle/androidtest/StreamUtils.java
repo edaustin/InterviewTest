@@ -17,13 +17,24 @@ public class StreamUtils {
     public static byte[] readUnknownFully(InputStream stream) throws IOException {
         // Read in stream of bytes
         ArrayList<Byte> data = new ArrayList<>();
+              /*
         while (true) {
             int result = stream.read();
             if (result == -1) {
                 break;
             }
+
             data.add((byte) result);
         }
+        */
+
+        int result;
+        do {
+            result = stream.read();
+            data.add((byte) result);
+        } while (result != -1);
+
+
 
         // Convert ArrayList<Byte> to byte[]
         byte[] bytes = new byte[data.size()];
